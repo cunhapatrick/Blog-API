@@ -3,22 +3,15 @@ import Youch from 'youch'
 import validate from 'express-validation'
 import cors from 'cors'
 import { json } from 'body-parser'
-const Sentry = require('@sentry/node')
 class App {
   constructor () {
     this.express = express()
     this.isDev = process.env.NODE_ENV !== 'production'
 
-    this.sentry()
     this.database()
     this.middleware()
     this.routes()
     this.exception()
-  }
-
-  sentry () {
-    // init sentry watch
-    Sentry.init({ dsn: process.env.SENTRY_DSN })
   }
 
   database () {
@@ -28,8 +21,6 @@ class App {
   }
 
   middleware () {
-    // middleware activation to sentry handler
-    this.express.use(Sentry.Handlers.requestHandler())
     this.express.use(json())
     this.express.use(cors())
   }
@@ -39,10 +30,6 @@ class App {
   }
 
   exception () {
-    // On production enviromnent active the sentry watch handler
-    if (process.env.NODE_ENV === 'production') {
-      this.express.use(Sentry.Handlers.errorHandler())
-    }
     // check if error is a validation Object
     this.express.use(async (err, req, res, next) => {
       if (err instanceof validate.ValidationError) {

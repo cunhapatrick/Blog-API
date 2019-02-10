@@ -201,3 +201,31 @@ Somente a autenticação do autor em que o comentário foi registrado que poder�
 
 ## Lista de TODOS do desafio
 
+:heavy_check_mark: Todos os endpoints de listagem devem ter paginação.
+- Basta passar page como parametro dentro da url para acessar as páginas
+
+:heavy_check_mark: Um artigo guarda informações sobre título, subtítulo, data de publicaçnao, data de última atualização, conteúdo do artigo, autor e permalink.
+
+:heavy_check_mark: O permalink do artigo deve ser único.
+
+:heavy_check_mark: Um artigo contém obrigatoriamente um autor.
+
+:heavy_check_mark: Bônus: Buscar comentários de um artigo específico.
+- Incluido além da busca por artigo específico, adicionei qualquer busca por filtro de atributo ainda seguindo o mesmo padrão de parâmetro na url em todos os endpoints de listagem
+
+:heavy_check_mark: Bônus: Possibilidade de passar por parâmetro a quantidade de itens por página
+- Seguindo o mesmo padrão de parâmetro no método GET o limite pode ser passado como parâmetro na url
+
+:heavy_check_mark: Bônus: Possibilidade de buscar um artigo por permalink.
+
+:heavy_check_mark: Bônus: Criação de testes
+- Fiz apenas alguns testes unitários e de integração que me auxiliaram na construção da aplicação.
+
+:heavy_check_mark: Bônus: Utilização de cache
+- Apliquei o banco de cache Redis para trabalhar nos endpoints de listagem para acelerar o desempenho das buscas.
+
+:heavy_check_mark: Bônus: Faça uma autenticação para usuário com JWT, permitindo o mesmo deletar seus comentários em uma postagem.
+- A autenticação é feita no endpoint de sessions que expliquei previamente para poder apagar os comentários.
+
+:x: Tratamento de erros
+- Fiz um tratamento básico de erros, mas não cobri todos os cenários possiveis.
